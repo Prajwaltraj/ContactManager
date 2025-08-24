@@ -1,20 +1,16 @@
-
 services:
   # Backend Service (Node.js API)
   backend:
-    build: ./backend
+    image: prajwal213/contact-manager-backend:latest # Changed from 'build'
     container_name: backend_api
     ports:
       - "5000:5000"
-    volumes:
-      - ./backend:/app/backend
-      - /app/backend/node_modules
     environment:
       - MONGO_URI=${MONGO_URI}
 
   # Frontend Service (React App)
   frontend:
-    build: ./frontend
+    image: prajwal213/contact-manager-frontend:latest # Changed from 'build'
     container_name: frontend_client
     ports:
       - "3000:80"
@@ -24,4 +20,3 @@ services:
 networks:
   default:
     driver: bridge
-    
